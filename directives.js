@@ -14,3 +14,12 @@
 //     template: '<h1>Hello, {{person}}</h1>'
 //   }
 // });
+
+// app.directive('btButton', function() {
+//   return {
+//     scope: {
+//       'btnVAl': '@'
+//     }
+//   }
+//   template: '<button class="btn btn-{{btnVAL}}"><button>'
+// });

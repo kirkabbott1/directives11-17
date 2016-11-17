@@ -5,14 +5,46 @@
     <title>directives</title>
     <script src="angular.js"></script>
     <script src="angular-ui-router.js"></script>
-    <script src="directives.js"> </script>
+    <!-- <script src="directives.js"> </script> -->
+    <!-- <script src="jquery.js"></script> -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+
+    <script>
+    var app = angular.module('app', ['ui.router']);
+
+    // app.directive('btButton', function() {
+    //   return {
+    //     transclude: true,
+    //     scope: {
+    //       'btnVal': '@'
+    //     },
+    //     template: '<button ng-class="btn btn-{{btnVal}}" ng-transclude>click me</button>'
+    //   };
+    // });
+    app.directive('btButton', function() {
+      return {
+        transclude: true,
+        scope: {
+          'type': '@'
+        },
+        controller: function($scope) {
+          $scope.booty = 'default';
+          if ($scope.type) {
+            $scope.booty = $scope.type
+          }
+        },
+        template: '<button class="btn btn-{{booty}}" ng-transclude>click me</button>'
+      };
+    });
+    </script>
 
 
   </head>
   <body ng-app='app'>
     <!-- <ui-view></ui-view> -->
-    <hello ></hello>
     <!-- <hello ></hello> -->
-
+    <!-- <hello ></hello> -->
+    <bt-button type='danger'></bt-button>
   </body>
 </html>
